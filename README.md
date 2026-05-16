@@ -26,19 +26,10 @@ Through my coursework and projects, I have developed experience in data analysis
 ### Savings Calculator App (Python)
 *[Self-taught] Designed and developed a Python-based savings calculator application to compare investment returns and support informed financial decision-making.*
 
+
 ## 🛠️ Skills
-
-### Data Analysis & Analytics
-- Excel (Pivot Tables, Solver)
-- SQL
-- Python
-- R / RStudio
-- Data Wrangling
-- Statistical Modeling
-- Predictive Analysis
-
-- **Data Visualization**: Power BI, R Studio, Excel.
 - **Data Analysis & Analytics**: SQL, R, Excel, Data Wrangling, Statistical Modeling, Predictive Analysis.
+- **Data Visualization**: Power BI, R Studio, Excel.
 - **Operations & Quantitative Analytics**: Forecasting & Error Analysis, Linear Programming, Waiting Line Analysis, Capacity Planning, Inventory Optimization.
 - **Professional Skills**: Problem Solving, Attention to Detail, Communication & Collaboration, Adaptability & Continuous Learning.
 
