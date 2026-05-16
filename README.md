@@ -1,4 +1,4 @@
-# Zarin Atia - Analysis Portfolio
+# Zarin Atia - Portfolio
 
 Welcome! I am a STEM MBA candidate focused on Business Analytics and Operations Management. This portfolio showcases my academic and analytical projects involving forecasting, simulation, optimization, data analysis, and business decision-making.
 
