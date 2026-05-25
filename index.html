@@ -1,234 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!--💡UPDATE: Change the title to your name-->
-    <title>Zarin Atia | Portfolio</title>
-      
-    <!--💡UPDATE: Add your favicon here. You can generate one at realfavicongenerator.net-->
-    <link rel="icon" type="image/png" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="/favicon-32x32.png">
-    
-    <!-- Google Fonts for Elegant Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <!-- Your Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>[Your Name] — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0f2240;--navy2:#1a3a60;--navy3:#1e4a78;
+  --gold:#c8a84b;--gold-light:rgba(200,168,75,0.15);--gold-border:rgba(200,168,75,0.4);
+  --green-dark:#27500A;--green:#3B6D11;--green-light:#eaf3de;
+  --blue-dark:#0C447C;--blue:#185FA5;--blue-light:#e6f1fb;
+  --amber-dark:#633806;--amber:#854F0B;--amber-light:#FAEEDA;
+  --red-dark:#7A1F1F;--red:#A32D2D;--red-light:#FCEBEB;
+  --text:#1a1a2e;--text2:#4a4a6a;--text3:#8888aa;
+  --bg:#f7f8fc;--bg2:#eef0f7;--bg3:#fff;
+  --border:#dde0ef;--border2:#c8cce0;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+
+/* NAV */
+nav{background:var(--navy);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold);}
+.nav-brand{color:#fff;font-family:'EB Garamond',serif;font-size:18px;font-weight:500;letter-spacing:0.02em;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{color:#aec6e8;font-size:13px;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--navy3) 100%);padding:5rem 2rem 4rem;text-align:center;border-bottom:3px solid var(--gold);}
+.hero-initials{width:80px;height:80px;border-radius:50%;background:var(--gold);color:var(--navy);font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'EB Garamond',serif;}
+.hero h1{color:#fff;font-family:'EB Garamond',serif;font-size:36px;font-weight:500;margin-bottom:0.4rem;letter-spacing:0.01em;}
+.hero-role{color:#aec6e8;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.25rem;}
+.hero-bio{color:#c8d8ec;font-size:15px;line-height:1.75;max-width:560px;margin:0 auto 1.75rem;}
+.hero-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.htag{background:var(--gold-light);border:1px solid var(--gold-border);color:var(--gold);font-size:12px;padding:5px 14px;border-radius:20px;letter-spacing:0.04em;}
+
+/* SECTIONS */
+.section{padding:3rem 2rem;max-width:900px;margin:0 auto;}
+.section-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy2);font-weight:600;margin-bottom:1.5rem;padding-bottom:0.6rem;border-bottom:2px solid var(--gold);display:inline-block;font-family:'DM Sans',sans-serif;}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:2.5rem;}
+.stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
+.stat-num{font-size:32px;font-weight:500;color:var(--navy2);font-family:'EB Garamond',serif;}
+.stat-lbl{font-size:12px;color:var(--text2);margin-top:3px;}
+
+/* PROJECT CARDS */
+.proj-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.5rem;box-shadow:0 2px 8px rgba(15,34,64,0.07);}
+.proj-header{background:var(--navy);padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.proj-title{color:#fff;font-size:15px;font-weight:500;font-family:'EB Garamond',serif;font-size:17px;}
+.proj-cat{background:rgba(200,168,75,0.2);border:1px solid var(--gold-border);color:var(--gold);font-size:11px;padding:3px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;letter-spacing:0.04em;}
+.proj-body{padding:1.5rem;}
+.proj-desc{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:1.1rem;}
+.proj-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.1rem;}
+.meta-box{background:var(--bg2);border-radius:7px;padding:0.7rem 1rem;}
+.meta-lbl{font-size:10px;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px;}
+.meta-val{font-size:13px;color:var(--text);font-weight:500;}
+
+/* CALLOUT BOXES */
+.finding-box{background:var(--green-light);border-left:3px solid var(--green);border-radius:0 7px 7px 0;padding:0.85rem 1.1rem;margin-bottom:1.1rem;}
+.finding-lbl{font-size:10px;color:var(--green);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:600;}
+.finding-val{font-size:13px;color:var(--green-dark);line-height:1.6;}
+.info-box{background:var(--blue-light);border-left:3px solid var(--blue);border-radius:0 7px 7px 0;padding:0.85rem 1.1rem;margin-bottom:1.1rem;}
+.info-lbl{font-size:10px;color:var(--blue);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:600;}
+.info-val{font-size:13px;color:var(--blue-dark);line-height:1.6;}
+.warning-box{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 7px 7px 0;padding:0.85rem 1.1rem;margin-bottom:1.1rem;}
+.warning-lbl{font-size:10px;color:var(--amber);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:600;}
+.warning-val{font-size:13px;color:var(--amber-dark);line-height:1.6;}
+
+/* TABLES */
+.data-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:1.1rem;}
+.data-table th{background:var(--navy);color:#aec6e8;padding:7px 10px;text-align:left;font-weight:500;font-size:11px;letter-spacing:0.04em;}
+.data-table td{padding:6px 10px;border-bottom:1px solid var(--border);color:var(--text2);}
+.data-table tr.best td{color:var(--green-dark);font-weight:600;background:var(--green-light);}
+.data-table tr:last-child td{border-bottom:none;}
+
+/* TOOLS */
+.tools-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:1rem;}
+.tool-tag{background:var(--bg2);border:1px solid var(--border2);color:var(--text2);font-size:12px;padding:4px 12px;border-radius:20px;}
+
+/* BAR CHARTS */
+.chart-title{font-size:12px;color:var(--text2);margin-bottom:8px;letter-spacing:0.03em;}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;}
+.bar-label{font-size:12px;color:var(--text2);width:90px;text-align:right;flex-shrink:0;}
+.bar-track{flex:1;background:var(--bg2);border-radius:4px;height:24px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:10px;font-size:11px;font-weight:500;}
+.bf-best{background:var(--green);color:var(--green-light);}
+.bf-good{background:var(--navy2);color:#aec6e8;}
+.bf-mid{background:#5F5E5A;color:#D3D1C7;}
+.bf-low{background:var(--gold);color:var(--navy);}
+.bf-danger{background:var(--red);color:var(--red-light);}
+
+/* SCENARIO CARDS */
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.1rem;}
+.sc-card{border-radius:10px;border:1px solid var(--border);padding:1rem;background:var(--bg2);}
+.sc-card.best-sc{border:2px solid var(--green);background:var(--green-light);}
+.sc-name{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;color:var(--navy2);}
+.sc-card.best-sc .sc-name{color:var(--green);}
+.sc-m-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.05em;}
+.sc-m-val{font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;}
+.sc-card.best-sc .sc-m-val{color:var(--green-dark);}
+.sc-badge{display:inline-block;font-size:10px;background:var(--green);color:var(--green-light);padding:2px 10px;border-radius:20px;margin-top:6px;}
+
+/* UTIL BARS */
+.util-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.util-lbl{font-size:12px;color:var(--text2);width:80px;flex-shrink:0;}
+.util-track{flex:1;background:var(--bg2);border-radius:4px;height:20px;}
+.util-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:10px;font-weight:500;}
+.uf-high{background:var(--red);color:var(--red-light);}
+.uf-med{background:var(--green);color:var(--green-light);}
+.uf-low{background:#5F5E5A;color:#D3D1C7;}
+
+/* PART DIVIDER */
+.part-divider{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy2);background:var(--bg2);border-radius:6px;padding:7px 14px;margin:1.1rem 0 1rem;display:inline-block;}
+
+/* QA GRID */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.1rem;}
+.qa-box{background:var(--bg2);border-radius:8px;padding:0.85rem;}
+.qa-q{font-size:11px;font-weight:600;color:var(--navy2);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;}
+.qa-a{font-size:14px;color:var(--text);font-weight:500;}
+.qa-sub{font-size:11px;color:var(--text2);margin-top:2px;}
+
+/* CPK */
+.cpk-row{display:flex;align-items:center;gap:14px;margin-bottom:1.1rem;}
+.cpk-val{text-align:center;min-width:70px;}
+.cpk-num{font-size:28px;font-weight:500;color:var(--red);font-family:'EB Garamond',serif;}
+.cpk-lbl{font-size:11px;color:var(--text2);}
+.cpk-gauge{flex:1;}
+.cpk-track{height:14px;border-radius:7px;background:linear-gradient(to right,var(--red) 0%,#BA7517 40%,var(--green) 70%,var(--navy2) 100%);position:relative;margin-bottom:5px;}
+.cpk-marker{position:absolute;top:-5px;width:3px;height:24px;background:var(--navy);border-radius:2px;}
+.cpk-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text3);}
+
+/* CHART PAIR */
+.chart-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.1rem;}
+.chart-thumb{border:1px solid var(--border);border-radius:9px;overflow:hidden;background:var(--bg2);padding:10px;}
+.chart-thumb-title{font-size:11px;color:var(--text2);text-align:center;margin-bottom:7px;letter-spacing:0.03em;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.skill-group{background:var(--bg3);border:1px solid var(--border);border-radius:11px;padding:1.1rem 1.25rem;}
+.skill-group-title{font-size:11px;font-weight:600;color:var(--navy2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;}
+.skill-items{display:flex;flex-wrap:wrap;gap:7px;}
+.skill-pill{background:var(--bg2);font-size:12px;color:var(--text2);padding:4px 12px;border-radius:20px;}
+
+/* CONTACT */
+.contact-bar{background:var(--navy);padding:3rem 2rem;text-align:center;margin-top:1rem;}
+.contact-bar p{color:#aec6e8;font-size:14px;margin-bottom:1rem;}
+.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.contact-link{color:var(--gold);font-size:13px;text-decoration:none;border:1px solid var(--gold-border);padding:8px 20px;border-radius:5px;letter-spacing:0.06em;transition:background 0.2s;}
+.contact-link:hover{background:rgba(200,168,75,0.1);}
+
+/* PLACEHOLDER */
+.proj-placeholder{background:var(--bg3);border:2px dashed var(--border2);border-radius:14px;padding:2.5rem;text-align:center;color:var(--text3);font-size:13px;margin-bottom:1.5rem;}
+</style>
 </head>
 <body>
 
-<!-- HEADER SECTION -->
-<header>
-    <div class="container">
-        <!--💡UPDATE: Change to your name and title-->
-        <h1>Zarin Atia</h1>
-        <p>STEM MBA Candidate | Business Analytics & Operations | Aspiring Business Analyst</p>
-        <div class="social-links">
-            <!--💡UPDATE: Add your social media links and CV file-->
-            <a href="https://www.linkedin.com/in/zarin23/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/rin-data" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="assets/Zarin Atia STEM-MBA Resume_2026.pdf" download title="Download CV"><i class="fas fa-file-arrow-down"></i></a>
-        </div>
-    </div>
-</header>
-
-<!-- NAVIGATION -->
 <nav>
-    <div class="container">
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
+  <span class="nav-brand">[ Your Name ] — Portfolio</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-<!-- ABOUT SECTION -->
-<section id="about" class="section">
-    <div class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <!--💡UPDATE: Change the image to your own profile photo in assets/images/-->
-            <img src="assets/images/pfp_purpl.png" alt="Zarin Atia" class="profile-photo">
-            <div class="about-text">
-                <!--💡UPDATE: Write your own 'About Me' text here-->
-                <p>MBA candidate (STEM-designated, Business Analytics focus) at Illinois State University. Interested in transforming complex datasets into actionable insights and creating interactive visualizations/data-driven stories that help organizations make informed decisions.</p>
-                <p>With experience in data analysis, forecasting, optimization, SQL, Python, R, and Excel to analyze data and support business decision-making. </p>
-                <p> This portfolio showcases my projects. Seeking Summer 2026 internship in Data Analytics, Business Analytics, or Operations.</p>
-            </div>
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="hero-initials">YN</div>
+  <h1>Your Name</h1>
+  <div class="hero-role">Operations Management &amp; Business Analytics</div>
+  <p class="hero-bio">Analytical professional with expertise in operations management, quality control, and data-driven decision making. I turn complex datasets into clear, actionable insights using Excel and R.</p>
+  <div class="hero-tags">
+    <span class="htag">Forecasting</span>
+    <span class="htag">Operations Management</span>
+    <span class="htag">Quality Control</span>
+    <span class="htag">Inventory Optimization</span>
+    <span class="htag">Queuing Theory</span>
+    <span class="htag">Excel</span>
+    <span class="htag">R Studio</span>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section" id="projects">
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num">5</div><div class="stat-lbl">Projects showcased</div></div>
+    <div class="stat-card"><div class="stat-num">2</div><div class="stat-lbl">Tools mastered</div></div>
+    <div class="stat-card"><div class="stat-num">4+</div><div class="stat-lbl">Project categories</div></div>
+  </div>
+
+  <div class="section-label">Featured Projects</div>
+
+  <!-- ===== PROJECT 1 ===== -->
+  <div class="proj-card">
+    <div class="proj-header">
+      <span class="proj-title">Comparing Forecasting Methods</span>
+      <span class="proj-cat">Operations Management</span>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">Evaluated seven forecasting techniques on 16 periods of quarterly sales data to identify the most accurate model for predicting period 17. Applied Moving Average, Weighted Average, multiple Exponential Smoothing variants, and Regression Analysis — then compared performance using MAD, MSE, and MAPE error metrics.</p>
+      <div class="proj-meta">
+        <div class="meta-box"><div class="meta-lbl">Tool</div><div class="meta-val">Microsoft Excel</div></div>
+        <div class="meta-box"><div class="meta-lbl">Dataset</div><div class="meta-val">16 periods, quarterly sales</div></div>
+        <div class="meta-box"><div class="meta-lbl">Methods tested</div><div class="meta-val">7 forecasting models</div></div>
+        <div class="meta-box"><div class="meta-lbl">Error metrics</div><div class="meta-val">MAD, MSE, MAPE</div></div>
+      </div>
+      <div class="finding-box">
+        <div class="finding-lbl">Key Finding</div>
+        <div class="finding-val">Regression Analysis produced the lowest error values across all three metrics (MAD = 8.82, MSE = 94.07, MAPE = 6.48%), with trend equation y = 3.8221x + 100.08.</div>
+      </div>
+      <table class="data-table">
+        <thead><tr><th>Method</th><th>MAD</th><th>MSE</th><th>MAPE (%)</th></tr></thead>
+        <tbody>
+          <tr><td>Simple Moving Average</td><td>12.21</td><td>224.79</td><td>8.62</td></tr>
+          <tr><td>Weighted Average</td><td>11.58</td><td>202.81</td><td>8.24</td></tr>
+          <tr><td>Exp. Smoothing (α=.1)</td><td>24.65</td><td>717.96</td><td>17.19</td></tr>
+          <tr><td>Exp. Smoothing (α=.3)</td><td>14.27</td><td>284.85</td><td>9.96</td></tr>
+          <tr><td>Exp. Smoothing w/ Trend (α=.1, δ=.3)</td><td>9.47</td><td>113.45</td><td>6.95</td></tr>
+          <tr><td>Exp. Smoothing w/ Trend (α=.3, δ=.3)</td><td>9.97</td><td>142.11</td><td>7.32</td></tr>
+          <tr class="best"><td>Regression Analysis ✓ Best</td><td>8.82</td><td>94.07</td><td>6.48</td></tr>
+        </tbody>
+      </table>
+      <div class="tools-row">
+        <span class="tool-tag">Excel</span><span class="tool-tag">Moving Average</span><span class="tool-tag">Exponential Smoothing</span><span class="tool-tag">Regression Analysis</span><span class="tool-tag">MAD / MSE / MAPE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PROJECT 2 ===== -->
+  <div class="proj-card">
+    <div class="proj-header">
+      <span class="proj-title">Using Simulations for Inventory Management</span>
+      <span class="proj-cat">Operations Management</span>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">Solved the classic Newsvendor Problem using Monte Carlo simulation in Excel. Simulated 100 days of demand using random number generation across six stocking policies (10–60 units) to determine the profit-maximising order quantity, then cross-validated the result using the analytical Newsvendor formula with critical ratio and NORM.INV.</p>
+      <div class="proj-meta">
+        <div class="meta-box"><div class="meta-lbl">Tool</div><div class="meta-val">Microsoft Excel</div></div>
+        <div class="meta-box"><div class="meta-lbl">Simulation</div><div class="meta-val">100-day Monte Carlo</div></div>
+        <div class="meta-box"><div class="meta-lbl">Policies tested</div><div class="meta-val">6 stocking levels</div></div>
+        <div class="meta-box"><div class="meta-lbl">Method</div><div class="meta-val">Simulation + Newsvendor</div></div>
+      </div>
+      <div class="chart-title">Average daily profit by stocking policy (100-day simulation)</div>
+      <div class="bar-row"><span class="bar-label">Stock 10</span><div class="bar-track"><div class="bar-fill bf-low" style="width:48%">$6.00</div></div></div>
+      <div class="bar-row"><span class="bar-label">Stock 20</span><div class="bar-track"><div class="bar-fill bf-mid" style="width:83%">$10.52</div></div></div>
+      <div class="bar-row"><span class="bar-label">Stock 30</span><div class="bar-track"><div class="bar-fill bf-best" style="width:100%">$12.74 ✓ Best</div></div></div>
+      <div class="bar-row"><span class="bar-label">Stock 40</span><div class="bar-track"><div class="bar-fill bf-good" style="width:98%">$12.53</div></div></div>
+      <div class="bar-row"><span class="bar-label">Stock 50</span><div class="bar-track"><div class="bar-fill bf-mid" style="width:73%">$9.35</div></div></div>
+      <div class="bar-row" style="margin-bottom:1.1rem;"><span class="bar-label">Stock 60</span><div class="bar-track"><div class="bar-fill bf-low" style="width:24%">$3.06</div></div></div>
+      <div class="info-box">
+        <div class="info-lbl">Analytical Cross-Check — Newsvendor Formula</div>
+        <div class="info-val">Cost of overage Co = $0.75 &nbsp;|&nbsp; Cost of underage Cu = $0.60 &nbsp;|&nbsp; Critical ratio = 0.44<br>NORM.INV(0.44, μ=35.6, σ=15.06) = 33.5 units → rounds to <strong>30</strong> — confirming simulation result.</div>
+      </div>
+      <div class="finding-box">
+        <div class="finding-lbl">Key Finding</div>
+        <div class="finding-val">Stocking 30 newspapers per day yields the highest average profit of $12.74. Both the Monte Carlo simulation and the analytical Newsvendor formula independently converged on the same optimal quantity of 30 units.</div>
+      </div>
+      <div class="tools-row">
+        <span class="tool-tag">Excel</span><span class="tool-tag">Monte Carlo Simulation</span><span class="tool-tag">Newsvendor Model</span><span class="tool-tag">NORM.INV</span><span class="tool-tag">Critical Ratio</span><span class="tool-tag">Random Number Generation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PROJECT 3 ===== -->
+  <div class="proj-card">
+    <div class="proj-header">
+      <span class="proj-title">Sterling Industrial Motors — Supply Chain Optimization</span>
+      <span class="proj-cat">Operations Management</span>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">Real-world minicase analysis for Sterling Industrial Motors Inc. (SIM), a conveyor systems assembler facing a supplier disruption and new tiered pricing structure. Applied EOQ modelling, quantity discount analysis, and transportation cost trade-offs (FCL vs. LCL) using a cut-and-try simulation across 32 order quantities to identify the landed-cost-minimising policy.</p>
+      <div class="proj-meta">
+        <div class="meta-box"><div class="meta-lbl">Tool</div><div class="meta-val">Microsoft Excel</div></div>
+        <div class="meta-box"><div class="meta-lbl">Annual demand</div><div class="meta-val">1,500 units</div></div>
+        <div class="meta-box"><div class="meta-lbl">Quantities simulated</div><div class="meta-val">25 – 800 units</div></div>
+        <div class="meta-box"><div class="meta-lbl">Cost components</div><div class="meta-val">6 (purchase, holding, ordering, transport, unloading, warehousing)</div></div>
+      </div>
+      <div class="chart-title">Total annual landed cost by order quantity — optimal at 400 units ($637,401)</div>
+      <svg viewBox="0 0 760 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin-bottom:1.1rem;">
+        <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a3a60" stop-opacity="0.15"/><stop offset="100%" stop-color="#1a3a60" stop-opacity="0"/></linearGradient></defs>
+        <text x="0" y="12" font-size="9" fill="#888">$678k</text>
+        <text x="0" y="72" font-size="9" fill="#888">$655k</text>
+        <text x="0" y="122" font-size="9" fill="#888">$637k</text>
+        <line x1="28" y1="8" x2="755" y2="8" stroke="#e0e0e0" stroke-width="0.5"/>
+        <line x1="28" y1="68" x2="755" y2="68" stroke="#e0e0e0" stroke-width="0.5"/>
+        <line x1="28" y1="118" x2="755" y2="118" stroke="#e0e0e0" stroke-width="0.5"/>
+        <polygon points="28,15 52,15 76,11 100,93 124,72 148,58 172,57 196,91 220,83 244,71 268,68 292,91 316,87 340,83 364,79 388,118 412,112 436,90 460,86 484,97 508,90 532,93 556,91 580,91 604,88 628,83 652,80 676,84 700,87 724,89 748,86 755,90 755,130 28,130" fill="url(#ag)"/>
+        <polyline points="28,15 52,15 76,11 100,93 124,72 148,58 172,57 196,91 220,83 244,71 268,68 292,91 316,87 340,83 364,79 388,118 412,112 436,90 460,86 484,97 508,90 532,93 556,91 580,91 604,88 628,83 652,80 676,84 700,87 724,89 748,86" fill="none" stroke="#1a3a60" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="388" cy="118" r="5" fill="#3B6D11"/>
+        <text x="388" y="109" text-anchor="middle" font-size="9" font-weight="600" fill="#3B6D11">Q=400</text>
+        <text x="28" y="128" font-size="9" fill="#888" text-anchor="middle">25</text>
+        <text x="196" y="128" font-size="9" fill="#888" text-anchor="middle">200</text>
+        <text x="388" y="128" font-size="9" fill="#888" text-anchor="middle">400</text>
+        <text x="580" y="128" font-size="9" fill="#888" text-anchor="middle">600</text>
+        <text x="748" y="128" font-size="9" fill="#888" text-anchor="middle">800</text>
+      </svg>
+      <div class="finding-box">
+        <div class="finding-lbl">Key Finding — Optimal Policy</div>
+        <div class="finding-val">Order 400 units per requisition (3.75 orders/year) at $386/unit. Total landed cost = <strong>$637,401</strong> — the lowest across all quantities tested. Basic EOQ alone (32 units) was far from optimal once transport economics, tiered pricing, and warehousing constraints were incorporated.</div>
+      </div>
+      <div class="info-box">
+        <div class="info-lbl">Case Questions Answered</div>
+        <div class="info-val">
+          <strong>Q1 — Was SIM at reorder point?</strong> Yes. Same-day free local delivery meant ROP = 0.<br>
+          <strong>Q2 — EOQ without discount?</strong> EOQ = 32.4 units (D=1,500, S=$35, H=$100).<br>
+          <strong>Q3 — What changed with discounts?</strong> Both holding cost (lower unit price) and ordering cost (volume-dependent transport) were affected, increasing optimal order size.<br>
+          <strong>Q4–5 — Recommended policy &amp; landed cost:</strong> 3.75 requisitions/year of 400 units. Total landed cost = $637,401.
         </div>
+      </div>
+      <div class="tools-row">
+        <span class="tool-tag">Excel</span><span class="tool-tag">EOQ Model</span><span class="tool-tag">Quantity Discounts</span><span class="tool-tag">Cut-and-Try Method</span><span class="tool-tag">FCL / LCL Transport</span><span class="tool-tag">Total Landed Cost</span>
+      </div>
     </div>
-</section>
+  </div>
 
-<!-- PROJECTS SECTION -->
-<section id="projects" class="section">
-    <div class="container">
-        <h2>My Projects</h2>
-        <div class="projects-grid">
-
-            <!--💡UPDATE: Replace this with your own project. Add as many as you like!-->
-            <!-- Project 1 -->
-             <div class="project-card">
-                <!--💡UPDATE: Add a preview image of your project to assets/images/ -->
-                <img src="assets/images/project-placeholder-1.jpg" alt="Project One Preview">
-                <div class="project-card-content">
-                    <h3>Project Title One</h3>
-                    <p>A brief, one or two-sentence description of your project, what it does, and the tools you used.</p>
-                    <div class="project-buttons">
-                        <!--💡UPDATE: Add link to your project's code/documentation on GitHub-->
-                        <a href="[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
-                        <!--💡UPDATE: Add link to your live dashboard (e.g., Power BI, Tableau Public)-->
-                        <a href="[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <img src="assets/images/project-placeholder-2.jpg" alt="Project Two Preview">
-                <div class="project-card-content">
-                    <h3>Project Title Two</h3>
-                    <p>A brief, one or two-sentence description of your project, what it does, and the tools you used.</p>
-                    <div class="project-buttons">
-                        <a href="[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
-                        <a href="[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <img src="assets/images/project-placeholder-3.jpg" alt="Project Three Preview">
-                <div class="project-card-content">
-                    <h3>Project Title Three</h3>
-                    <p>A brief, one or two-sentence description of your project, what it does, and the tools you used.</p>
-                    <div class="project-buttons">
-                        <a href="[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
-                        <a href="[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card">
-                <img src="assets/images/project-placeholder-4.jpg" alt="Project Four Preview">
-                <div class="project-card-content">
-                    <h3>Project Title Four</h3>
-                    <p>A brief, one or two-sentence description of your project, what it does, and the tools you used.</p>
-                    <div class="project-buttons">
-                        <a href="[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
-                        <a href="[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
-
+  <!-- ===== PROJECT 4 ===== -->
+  <div class="proj-card">
+    <div class="proj-header">
+      <span class="proj-title">Service Wait Times — Waiting Line Analysis Using Simulations</span>
+      <span class="proj-cat">Operations Management</span>
+    </div>
+    <div class="proj-body">
+      <p class="proj-desc">Queuing simulation for a college coffee shop evaluating whether to add baristas during peak hours. Used random number generation to simulate 40 customer arrivals under three staffing scenarios (1, 2, and 3 baristas), computing total daily cost, utilization rates, idle time, average system time, and throughput — then made a data-driven staffing recommendation.</p>
+      <div class="proj-meta">
+        <div class="meta-box"><div class="meta-lbl">Tool</div><div class="meta-val">Microsoft Excel</div></div>
+        <div class="meta-box"><div class="meta-lbl">Customers simulated</div><div class="meta-val">40 arrivals per scenario</div></div>
+        <div class="meta-box"><div class="meta-lbl">Scenarios tested</div><div class="meta-val">1, 2, and 3 baristas</div></div>
+        <div class="meta-box"><div class="meta-lbl">Discipline</div><div class="meta-val">FCFS queuing simulation</div></div>
+      </div>
+      <div class="chart-title">Total daily cost by staffing scenario</div>
+      <div class="bar-row"><span class="bar-label">1 barista</span><div class="bar-track"><div class="bar-fill bf-danger" style="width:100%">$1,644.29</div></div></div>
+      <div class="bar-row"><span class="bar-label">2 baristas</span><div class="bar-track"><div class="bar-fill bf-best" style="width:7.3%">$120.64 ✓</div></div></div>
+      <div class="bar-row" style="margin-bottom:1rem;"><span class="bar-label">3 baristas</span><div class="bar-track"><div class="bar-fill bf-good" style="width:5.2%">$86.29</div></div></div>
+      <div class="chart-title">Barista utilization rate by scenario</div>
+      <div class="util-row"><span class="util-lbl">1 barista</span><div class="util-track"><div class="util-fill uf-high" style="width:97.35%">97.35% — overloaded</div></div></div>
+      <div class="util-row"><span class="util-lbl">2 baristas</span><div class="util-track"><div class="util-fill uf-med" style="width:69.3%">69.3% — optimal</div></div></div>
+      <div class="util-row" style="margin-bottom:1.1rem;"><span class="util-lbl">3 baristas</span><div class="util-track"><div class="util-fill uf-low" style="width:48%">48% — underutilized</div></div></div>
+      <div class="scenario-grid">
+        <div class="sc-card">
+          <div class="sc-name">1 Barista</div>
+          <div class="sc-m-lbl">Daily cost</div><div class="sc-m-val">$1,644.29</div>
+          <div class="sc-m-lbl">Avg. time in system</div><div class="sc-m-val">24.9 min</div>
+          <div class="sc-m-lbl">Throughput</div><div class="sc-m-val">15.89 / hr</div>
+          <div class="sc-m-lbl">Idle time</div><div class="sc-m-val">2.65%</div>
         </div>
-    </div>
-</section>
-
-<!-- SKILLS SECTION -->
-<section id="skills" class="section">
-    <div class="container">
-        <h2>Technical Skillset</h2>
-        <div class="skills-table">
-            
-            <!--💡UPDATE: Customize your skills in each category-->
-            <!-- Column 1: Data Visualization -->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Data Visualization</h3>
-                </div>
-                <ul class="skill-list">
-                    <li>Power BI</li>
-                    <li>R Studio</li>
-                    <li>Excel</li>
-                </ul>
-            </div>
-
-            <!-- Column 2: Data Analysis -->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-search-plus"></i>
-                    <h3>Programming/Tools</h3>
-                </div>
-                <ul class="skill-list">
-                    <li>R</li>
-                    <li>Excel</li>
-                    <li>Python</li>
-                    <li>SQL</li>
-                </ul>
-            </div>
-
-            <!-- Column 3: Analytics/Methods-->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Analytics/Methods</h3>
-                </div>
-                <ul class="skill-list">
-                    <li>Data Wrangling</li>
-                    <li>Predictive Analytics</li>
-                    <li>Time-Series Forecasting</li>
-                    <li>Linear Programming</li>
-                </ul>
-            </div>
-
+        <div class="sc-card best-sc">
+          <div class="sc-name">2 Baristas</div>
+          <div class="sc-m-lbl">Daily cost</div><div class="sc-m-val">$120.64</div>
+          <div class="sc-m-lbl">Avg. time in system</div><div class="sc-m-val">4.33 min</div>
+          <div class="sc-m-lbl">Throughput</div><div class="sc-m-val">22.64 / hr</div>
+          <div class="sc-m-lbl">Idle time</div><div class="sc-m-val">30.66%</div>
+          <span class="sc-badge">Recommended</span>
         </div>
+        <div class="sc-card">
+          <div class="sc-name">3 Baristas</div>
+          <div class="sc-m-lbl">Daily cost</div><div class="sc-m-val">$86.29</div>
+          <div class="sc-m-lbl">Avg. time in system</div><div class="sc-m-val">2.53 min</div>
+          <div class="sc-m-lbl">Throughput</div><div class="sc-m-val">23.53 / hr</div>
+          <div class="sc-m-lbl">Idle time</div><div class="sc-m-val">51.96%</div>
+        </div>
+      </div>
+      <div class="finding-box">
+        <div class="finding-lbl">Key Finding</div>
+        <div class="finding-val">Two baristas is the optimal staffing level. Adding a second barista reduces daily cost by 93% ($1,644 → $121) and cuts average wait time from 24.9 to 4.3 minutes. A third barista saves only $34/day more while leaving staff idle 52% of the time — not worth the marginal gain.</div>
+      </div>
+      <div class="info-box">
+        <div class="info-lbl">Key Insight</div>
+        <div class="info-val">In service systems, 100% utilization is never a goal — a single overloaded barista creates runaway queue costs that dwarf the labour saving. The moment a second barista is removed, waiting costs spike back up.</div>
+      </div>
+      <div class="tools-row">
+        <span class="tool-tag">Excel</span><span class="tool-tag">Queuing Simulation</span><span class="tool-tag">FCFS Discipline</span><span class="tool-tag">Random Number Generation</span><span class="tool-tag">Utilization Analysis</span><span class="tool-tag">Cost-Benefit Analysis</span>
+      </div>
     </div>
-</section>
+  </div>
 
-<!-- CONTACT FORM SECTION -->
-<section id="contact" class="section">
-    <div class="container">
-        <h2>Send me a message</h2>
-        
-        <!--💡UPDATE: Go to formsubmit.co and replace the email with your own-->
-        <form action="https://formsubmit.co/atia.zarin23@gmail.com" method="POST" class="contact-form">
-            <p> Interested in collaborating or have questions? I'd love to hear from you!</p>
-
-            <!-- Form Fields -->
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Your email" required>
-            </div>
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" name="subject" id="subject" placeholder="Subject" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea name="message" id="message" rows="6" placeholder="Your message" required></textarea>
-            </div>
-            
-            <!-- Submit Button -->
-            <button type="submit" class="btn">Send Message</button>
-
-        </form>
+  <!-- ===== PROJECT 5 ===== -->
+  <div class="proj-card">
+    <div class="proj-header">
+      <span class="proj-title">Statistical Process Control &amp; Process Capability Analysis</span>
+      <span class="proj-cat">Quality Management</span>
     </div>
-</section>
+    <div class="proj-body">
+      <p class="proj-desc">Two-part quality management case study. Part A uses X̄ and R control charts to monitor and evaluate cure time stability in a plastics manufacturing process. Part B applies process capability analysis (Cpk, z-scores, normal distribution) to assess washer thickness conformance in Toyota's accelerator assembly line.</p>
+      <div class="proj-meta">
+        <div class="meta-box"><div class="meta-lbl">Tool</div><div class="meta-val">Microsoft Excel</div></div>
+        <div class="meta-box"><div class="meta-lbl">Part A samples</div><div class="meta-val">25 baseline + 12 production</div></div>
+        <div class="meta-box"><div class="meta-lbl">Part B sample</div><div class="meta-val">40 washers measured</div></div>
+        <div class="meta-box"><div class="meta-lbl">Methods</div><div class="meta-val">SPC charts, Cpk, z-scores</div></div>
+      </div>
 
-<!-- FOOTER -->
-<footer>
-    <div class="container">
-        <!--💡UPDATE: Change the year and your name-->
-        <p>&copy; 2026 Zarin Atia. All rights reserved.</p>
+      <div class="part-divider">Part A — Unnamed Plastics: SPC Cure Time Control</div>
+      <div class="chart-pair">
+        <div class="chart-thumb">
+          <div class="chart-thumb-title">X̄ Chart — Baseline (25 samples)</div>
+          <svg viewBox="0 0 280 100" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+            <line x1="10" y1="18" x2="270" y2="18" stroke="#378ADD" stroke-width="1" stroke-dasharray="3,2"/>
+            <line x1="10" y1="50" x2="270" y2="50" stroke="#3B6D11" stroke-width="1"/>
+            <line x1="10" y1="82" x2="270" y2="82" stroke="#D85A30" stroke-width="1" stroke-dasharray="3,2"/>
+            <polyline points="10,68 21,62 32,54 43,44 54,56 65,58 76,57 87,66 98,58 109,59 120,63 131,61 142,57 153,58 164,61 175,57 186,55 197,53 208,56 219,56 230,56 241,55 252,58 263,66 274,57" fill="none" stroke="#0f2240" stroke-width="1.5" stroke-linejoin="round"/>
+            <text x="272" y="20" font-size="7" fill="#378ADD">UCL</text>
+            <text x="272" y="52" font-size="7" fill="#3B6D11">CL</text>
+            <text x="272" y="84" font-size="7" fill="#D85A30">LCL</text>
+            <text x="140" y="95" font-size="7" fill="#3B6D11" text-anchor="middle">all points within limits ✓</text>
+          </svg>
+        </div>
+        <div class="chart-thumb">
+          <div class="chart-thumb-title">X̄ Chart — With 12 New Production Samples</div>
+          <svg viewBox="0 0 280 100" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+            <line x1="10" y1="18" x2="270" y2="18" stroke="#378ADD" stroke-width="1" stroke-dasharray="3,2"/>
+            <line x1="10" y1="50" x2="270" y2="50" stroke="#3B6D11" stroke-width="1"/>
+            <line x1="10" y1="82" x2="270" y2="82" stroke="#D85A30" stroke-width="1" stroke-dasharray="3,2"/>
+            <line x1="168" y1="4" x2="168" y2="96" stroke="#c8a84b" stroke-width="0.8" stroke-dasharray="3,2"/>
+            <text x="171" y="10" font-size="6" fill="#854F0B">new samples →</text>
+            <polyline points="10,68 21,62 32,54 43,44 54,56 65,58 76,57 87,66 98,58 109,59 120,63 131,61 142,57 153,58 164,61 168,57" fill="none" stroke="#0f2240" stroke-width="1.5" stroke-linejoin="round"/>
+            <polyline points="168,57 180,46 192,38 204,68 216,58 228,10 240,52 252,42 264,36 270,30" fill="none" stroke="#A32D2D" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="2,1"/>
+            <circle cx="228" cy="10" r="3" fill="#A32D2D"/>
+            <text x="140" y="95" font-size="7" fill="#A32D2D" text-anchor="middle">sample 6 breaches UCL — out of control ✗</text>
+          </svg>
+        </div>
+      </div>
+      <div class="warning-box">
+        <div class="warning-lbl">Part A — Key Finding</div>
+        <div class="warning-val">The baseline process (25 samples) appeared stable — all X̄ and R values fell within control limits. When 12 new production-run samples were plotted using the same limits, the process showed signs of being out of control: sample 6 (mean = 41.75) exceeded the UCL of 36.88, indicating a significant shift in the process mean and increasing variability.</div>
+      </div>
+
+      <div class="part-divider">Part B — Toyota Washer Thickness: Process Capability</div>
+      <div class="qa-grid">
+        <div class="qa-box">
+          <div class="qa-q">Q1 — Fraction exceeding 2.4 mm</div>
+          <div class="qa-a">1.84% of output</div>
+          <div class="qa-sub">z = 2.09 → area above = 0.0184</div>
+        </div>
+        <div class="qa-box">
+          <div class="qa-q">Q2 — Fraction outside 1.4–2.4 mm</div>
+          <div class="qa-a">2.21% out of tolerance</div>
+          <div class="qa-sub">1.84% too thick + 0.36% too thin</div>
+        </div>
+        <div class="qa-box">
+          <div class="qa-q">Q4 — Cpk if centered at 1.9 mm</div>
+          <div class="qa-a">Cp = 0.795</div>
+          <div class="qa-sub">Still below 1.0 — spread too wide</div>
+        </div>
+        <div class="qa-box">
+          <div class="qa-q">Q5 — Defect rate if centered</div>
+          <div class="qa-a">~1.71% defective</div>
+          <div class="qa-sub">z = ±2.385, symmetric on both sides</div>
+        </div>
+      </div>
+      <div class="cpk-row">
+        <div class="cpk-val">
+          <div class="cpk-num">0.696</div>
+          <div class="cpk-lbl">Current Cpk</div>
+        </div>
+        <div class="cpk-gauge">
+          <div class="cpk-track"><div class="cpk-marker" style="left:calc(0.696/2*100% - 1px)"></div></div>
+          <div class="cpk-labels"><span>0</span><span>0.5</span><span>1.0 (min)</span><span>1.33</span><span>2.0</span></div>
+        </div>
+      </div>
+      <div class="warning-box">
+        <div class="warning-lbl">Part B — Key Finding</div>
+        <div class="warning-val">With a mean thickness of 1.9625 mm and σ = 0.2096 mm, the current Cpk = 0.696 — well below the acceptable threshold of 1.0. Even centering the process at 1.9 mm only raises Cp to 0.795, still below 1.0. The process spread is too wide relative to specification width; variation must be reduced, not just the mean shifted.</div>
+      </div>
+      <div class="finding-box">
+        <div class="finding-lbl">Overall Learning</div>
+        <div class="finding-val">SPC and capability analysis are distinct but complementary tools. Control charts detect whether a process is stable over time; Cpk measures whether it meets specifications. A process can be in statistical control but still incapable — as demonstrated here, where the washer process is stable but too variable to reliably meet tolerance limits.</div>
+      </div>
+      <div class="tools-row">
+        <span class="tool-tag">Excel</span><span class="tool-tag">X̄ &amp; R Control Charts</span><span class="tool-tag">SPC</span><span class="tool-tag">UCL / LCL</span><span class="tool-tag">Cpk / Cp</span><span class="tool-tag">Z-scores</span><span class="tool-tag">Normal Distribution</span><span class="tool-tag">Process Capability</span>
+      </div>
     </div>
-</footer>
+  </div>
 
-<script src="assets/js/main.js"></script>
+  <div class="proj-placeholder">More projects coming soon — check back later!</div>
+</div>
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="section-label">Skills &amp; Tools</div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Operations Management</div>
+      <div class="skill-items">
+        <span class="skill-pill">Forecasting</span><span class="skill-pill">Inventory optimization</span><span class="skill-pill">Supply chain analysis</span><span class="skill-pill">EOQ modelling</span><span class="skill-pill">Demand planning</span><span class="skill-pill">Queuing theory</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Quality Management</div>
+      <div class="skill-items">
+        <span class="skill-pill">SPC / Control charts</span><span class="skill-pill">Process capability (Cpk)</span><span class="skill-pill">X̄ &amp; R charts</span><span class="skill-pill">Tolerance analysis</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Analytics &amp; Methods</div>
+      <div class="skill-items">
+        <span class="skill-pill">Regression analysis</span><span class="skill-pill">Monte Carlo simulation</span><span class="skill-pill">Normal distribution</span><span class="skill-pill">Statistical modelling</span><span class="skill-pill">Cost-benefit analysis</span><span class="skill-pill">Case study analysis</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Software</div>
+      <div class="skill-items">
+        <span class="skill-pill">Microsoft Excel</span><span class="skill-pill">R Studio</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-bar" id="contact">
+  <p>Interested in working together? Let's connect.</p>
+  <div class="contact-links">
+    <a class="contact-link" href="https://github.com/yourusername" target="_blank">GitHub</a>
+    <a class="contact-link" href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+    <a class="contact-link" href="#">Resume</a>
+  </div>
+</div>
 
 </body>
 </html>
